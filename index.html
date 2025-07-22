@@ -1,0 +1,581 @@
+<!DOCTYPE html><html lang="nl"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 35.3.0">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.ico">
+<link rel="stylesheet" type="text/css" href="https://tools.geostandaarden.nl/publication/domain/geen/style.css">
+<title>Software beheerportaal 0.0.1</title>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px;background:0 0}
+</style>
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://docs.geostandaarden.nl/geen/SOBE/">
+<script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "nl",
+      "w3p": "http://www.w3.org/2001/02pd/rec54#",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://docs.geostandaarden.nl/geen/SOBE/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Software beheerportaal 0.0.1",
+  "inLanguage": "nl",
+  "license": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+  "datePublished": "2025-04-24",
+  "copyrightHolder": {
+    "name": "World Wide Web Consortium",
+    "url": "https://www.w3.org/"
+  },
+  "alternativeHeadline": "",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Gerard Wolbers",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Gerard Wolbers",
+      "worksFor": {
+        "name": "Geonovum",
+        "url": "https://www.geonovum.nl/"
+      }
+    }
+  ],
+  "citation": []
+}</script>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "postProcess": [
+    null
+  ],
+  "doJsonLd": true,
+  "specStatusText": {
+    "en": {
+      "geen": "None",
+      "basis": "Document",
+      "ld": "Living document",
+      "cv": "Candidate recommendation",
+      "def": "Recommendation",
+      "vv": "Proposed recommendation",
+      "wv": "Editor’s draft"
+    },
+    "nl": {
+      "geen": "Geen",
+      "basis": "Document",
+      "ld": "Levend document",
+      "cv": "Consultatieversie",
+      "def": "Vastgestelde versie",
+      "vv": "Versie ter vaststelling",
+      "wv": "Werkversie"
+    }
+  },
+  "labelColor": {
+    "geen": "#000000",
+    "basis": "#80CC28",
+    "ld": "#80CC28",
+    "cv": "#045D9F",
+    "def": "#045D9F",
+    "vv": "#045D9F",
+    "wv": "#FF0000"
+  },
+  "specTypeText": {
+    "en": {
+      "geen": "None",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Guideline",
+      "hr": "Guide",
+      "wa": "Working arrangement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "geen": "Geen",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "licenses": {
+    "geen": {
+      "name": "Geen"
+    },
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-zero.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg"
+    }
+  },
+  "nl_organisationStylesURL": "https://tools.geostandaarden.nl/publication/domain/geen/",
+  "latestVersion": [
+    "https://docs.geostandaarden.nl/geen/SOBE/"
+  ],
+  "thisVersion": [
+    "https://docs.geostandaarden.nl/geen/def-bd-SOBE-20250424/"
+  ],
+  "prevVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName",
+    "/",
+    "previousPublishDate"
+  ],
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "geonovum",
+      "height": "67",
+      "width": "132",
+      "url": "https://www.geonovum.nl/geo-standaarden",
+      "ico": "https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.ico"
+    }
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "addSectionLinks": false,
+  "sotdText": {
+    "en": {
+      "sotd": "Status of This Document",
+      "geen": "None",
+      "basis": "This document has no official standing.",
+      "ld": "This is a living document, which is updated regularly.",
+      "cv": "This is a proposed recommendation approved by TO. Comments regarding this document may be sent to [address].",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "vv": "This is the definitive concept of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a draft that could be altered, removed or replaced by other documents. It is not a recommendation approved by TO."
+    },
+    "nl": {
+      "sotd": "Status van dit document",
+      "geen": "Geen",
+      "basis": "Dit is een document zonder officiële status.",
+      "ld": "Dit is een levend document dat regelmatig gewijzigd wordt.",
+      "cv": "Dit is een door het TO goedgekeurde consultatieversie. Commentaar over dit document kan gestuurd worden naar [adres].",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "vv": "Dit is een definitief concept van de nieuwe versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen door het TO goedgekeurde consultatieversie."
+    }
+  },
+  "title": "Software beheerportaal",
+  "shortName": "SOBE",
+  "pubDomain": "geen",
+  "specStatus": "def",
+  "specType": "bd",
+  "license": "cc-by-nd",
+  "publishDate": "2025-04-24",
+  "publishVersion": "0.0.1",
+  "edDraftURI": "https://geonovum.github.io/geen-SOBE/",
+  "canonicalURI": "https://docs.geostandaarden.nl/geen/SOBE/",
+  "authors": [
+    {
+      "name": "Gerard Wolbers",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Gerard Wolbers",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl/"
+    }
+  ]
+}</script>
+<link rel="stylesheet" href="https://tools.geostandaarden.nl/publication/domain/geen/base.css"></head><body class="h-entry informative"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="geonovum" src="https://tools.geostandaarden.nl/publication/domain/geen/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">Software beheerportaal 0.0.1</h1>
+    
+    <h2>
+      Geonovum Beheerdocumentatie<br>
+      Vastgestelde versie
+      <time class="dt-published" datetime="2025-04-24">24 april 2025</time>
+    </h2>
+    <dl>
+      <dt>Deze versie:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/geen/def-bd-sobe-20250424/">https://docs.geostandaarden.nl/geen/def-bd-sobe-20250424/</a>
+            </dd>
+      <dt>Laatst gepubliceerde versie:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/geen/sobe/">https://docs.geostandaarden.nl/geen/sobe/</a>
+            </dd>
+      <dt>Laatste werkversie:</dt><dd><a href="https://geonovum.github.io/geen-SOBE/">https://geonovum.github.io/geen-SOBE/</a></dd>
+      
+      
+      
+      
+      
+      <dt>Redacteur:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Gerard Wolbers</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+      <dt>Auteur:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Gerard Wolbers</span> (<a class="p-org org h-org" href="https://www.geonovum.nl/">Geonovum</a>)
+  </dd>
+      
+    </dl>
+    
+    
+    
+    <p class="copyright">
+            Dit document valt onder de volgende licentie: 
+            <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/publication/organisation/geonovum/cc-by-nd.svg" alt="Logo Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal"><br> Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal</a>
+          </p>
+    <hr title="Separator for header">
+  </div><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#x1-293A03BC"><bdi class="secno">1. </bdi>Software beheerportaal</a></li><li class="tocline"><a class="tocxref" href="#x2-4D66D3C5"><bdi class="secno">2. </bdi>Beheerportaal zelf</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x2-1-37ECBA1B"><bdi class="secno">2.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x2-2-0B25F118"><bdi class="secno">2.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x2-3-4AF32F1F"><bdi class="secno">2.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x2-4-4E753D5A"><bdi class="secno">2.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x2-5-0871AA7A"><bdi class="secno">2.5 </bdi>Frequentie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#x3-7CD70D38"><bdi class="secno">3. </bdi>Publicatiestraten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x3-1-5B775BF9"><bdi class="secno">3.1 </bdi>word2markdown</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x3-1-1-0D104DD4"><bdi class="secno">3.1.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x3-1-2-54EFFB96"><bdi class="secno">3.1.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x3-1-3-1A906CBB"><bdi class="secno">3.1.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x3-1-4-16BA6993"><bdi class="secno">3.1.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x3-1-5-5A36961C"><bdi class="secno">3.1.5 </bdi>Frequentie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#x3-2-4252F354"><bdi class="secno">3.2 </bdi>word2werkversie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x3-2-1-034DB170"><bdi class="secno">3.2.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x3-2-2-5A6204F6"><bdi class="secno">3.2.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x3-2-3-303C9F23"><bdi class="secno">3.2.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x3-2-4-13EC9CB3"><bdi class="secno">3.2.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x3-2-5-1D068571"><bdi class="secno">3.2.5 </bdi>Frequentie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#x3-3-03EFB558"><bdi class="secno">3.3 </bdi>word2publicatie</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x3-3-1-0CB452AA"><bdi class="secno">3.3.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x3-3-2-27DC8561"><bdi class="secno">3.3.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x3-3-3-5B910CCF"><bdi class="secno">3.3.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x3-3-4-57DADDEC"><bdi class="secno">3.3.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x3-3-5-0D1D1EC3"><bdi class="secno">3.3.5 </bdi>Frequentie</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#x4-62CAA20C"><bdi class="secno">4. </bdi>Overzicht</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x4-1-70316F1E"><bdi class="secno">4.1 </bdi>DSO-overzicht</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x4-1-1-24BDCEF7"><bdi class="secno">4.1.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x4-1-2-26AD9AAA"><bdi class="secno">4.1.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x4-1-3-1650FD7C"><bdi class="secno">4.1.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x4-1-4-6EA69478"><bdi class="secno">4.1.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x4-1-5-6628B78E"><bdi class="secno">4.1.5 </bdi>Frequentie</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#x5-0A30D2DA"><bdi class="secno">5. </bdi>Presentatiemodel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x5-1-12B7A01F"><bdi class="secno">5.1 </bdi>Muteren</a></li><li class="tocline"><a class="tocxref" href="#x5-2-4075CA58"><bdi class="secno">5.2 </bdi>Publiceren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x5-2-1-6D8346FF"><bdi class="secno">5.2.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x5-2-2-389B1BB7"><bdi class="secno">5.2.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x5-2-3-094C4534"><bdi class="secno">5.2.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x5-2-4-12140655"><bdi class="secno">5.2.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x5-2-5-2C65D331"><bdi class="secno">5.2.5 </bdi>Frequentie</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#x6-29867F1C"><bdi class="secno">6. </bdi>Waardelijsten</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x6-1-6DC4AB76"><bdi class="secno">6.1 </bdi>Muteren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x6-1-1-429F5006"><bdi class="secno">6.1.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x6-1-2-67C75D0A"><bdi class="secno">6.1.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x6-1-3-6FBA282E"><bdi class="secno">6.1.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x6-1-4-633B7E0D"><bdi class="secno">6.1.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x6-1-5-095C9D44"><bdi class="secno">6.1.5 </bdi>Frequentie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#x6-2-2E646573"><bdi class="secno">6.2 </bdi>Exporteren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x6-2-1-13C63A1C"><bdi class="secno">6.2.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x6-2-2-72690C62"><bdi class="secno">6.2.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x6-2-3-6DB0FF5B"><bdi class="secno">6.2.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x6-2-4-748A9196"><bdi class="secno">6.2.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x6-2-5-599AB208"><bdi class="secno">6.2.5 </bdi>Frequentie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#x6-3-55CAFFCF"><bdi class="secno">6.3 </bdi>Publiceren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x6-3-1-5B8424DE"><bdi class="secno">6.3.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x6-3-2-1A917462"><bdi class="secno">6.3.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x6-3-3-654E1B65"><bdi class="secno">6.3.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x6-3-4-7800EF07"><bdi class="secno">6.3.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x6-3-5-352618A4"><bdi class="secno">6.3.5 </bdi>Frequentie</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#x7-271E7FC0"><bdi class="secno">7. </bdi>Toepassingsprofiel</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x7-1-6070D0F7"><bdi class="secno">7.1 </bdi>Opslaan</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x7-1-1-0ACC24F6"><bdi class="secno">7.1.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x7-1-2-60CFB09C"><bdi class="secno">7.1.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x7-1-3-14284635"><bdi class="secno">7.1.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x7-1-4-4E6C7DA7"><bdi class="secno">7.1.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x7-1-5-411B2ACE"><bdi class="secno">7.1.5 </bdi>Frequentie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#x7-2-4473E89F"><bdi class="secno">7.2 </bdi>Samenvoegen</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x7-2-1-36751E07"><bdi class="secno">7.2.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x7-2-2-09DB72C1"><bdi class="secno">7.2.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x7-2-3-34DBA7E9"><bdi class="secno">7.2.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x7-2-4-5697B69D"><bdi class="secno">7.2.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x7-2-5-52E1808E"><bdi class="secno">7.2.5 </bdi>Frequentie</a></li></ol></li><li class="tocline"><a class="tocxref" href="#x7-3-27C71157"><bdi class="secno">7.3 </bdi>Publiceren</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#x7-3-1-1AC92E1F"><bdi class="secno">7.3.1 </bdi>Functionaliteit</a></li><li class="tocline"><a class="tocxref" href="#x7-3-2-10D465BF"><bdi class="secno">7.3.2 </bdi>Gebruik</a></li><li class="tocline"><a class="tocxref" href="#x7-3-3-79DF5BE8"><bdi class="secno">7.3.3 </bdi>Beheerlocatie</a></li><li class="tocline"><a class="tocxref" href="#x7-3-4-0A9E3626"><bdi class="secno">7.3.4 </bdi>Componenten</a></li><li class="tocline"><a class="tocxref" href="#x7-3-5-704E2C99"><bdi class="secno">7.3.5 </bdi>Frequentie</a></li></ol></li></ol></li></ol></nav><section id="293A03BC" class="chapter"><h2 id="x1-293A03BC"><bdi class="secno">1. </bdi>Software beheerportaal</h2><p id="31AE0276" class="space-after">Dit document bevat een overzicht van de software die zorgt dat het beheerportaal werkt. De paragrafen bevatten componenten van het portal en per component is het volgende aangegeven:</p><p id="753E0346"><b>Functionaliteit - </b>beschrijving van wat de software doet. </p><p id="67109D2C"><b>Gebruik – </b>Wie zijn je gebruikers. Hoe doen ze het nu en kunnen ze zelfstandig werken.</p><p id="036A8DDC"><b>Beheerlocatie </b>– locatie waar de software beheerd wordt en waar de documentatie staat, voor beheerder en gebruiker.</p><p id="29D0E17A"><b>Componenten – </b>beschrijving van de hoofdcomponenten waaruit de software bestaat, waaruit je kunt opmaken welke kennis je nodig hebt om deze component te beheren.</p><p id="21F71925" class="space-after"><b>Frequentie – </b>Hoe vaak wordt de module gebruikt? Hoeveel beheerwerk zit eraan per maand?</p></section><section id="4D66D3C5" class="chapter"><h2 id="x2-4D66D3C5"><bdi class="secno">2. </bdi>Beheerportaal zelf</h2><section id="37ECBA1B" class="chapter"><h3 id="x2-1-37ECBA1B"><bdi class="secno">2.1 </bdi>Functionaliteit</h3><p id="395E3983">Zoals de naam zegt is het een portaal om verschillende workflows te beheren. De opzet is analoog aan het gebruik van GitHub actions. Het bevat een mogelijkheid om workflows en workflow-stappen te definiëren. Voor het DSO en de algemene publicatiestraten zijn de volgende workflows ontwikkeld of nog te ontwikkelen.</p><figure id="d4e72"><img src="media/image1.png" alt="Afbeelding met tekst, schermopname, Lettertype, document" style="width: 100%;"><figcaption><a class="self-link" href="#d4e72">Figuur <bdi class="figno">1</bdi></a> <span class="fig-title">Overzicht van workflows</span></figcaption></figure></section><section id="0B25F118" class="chapter"><h3 id="x2-2-0B25F118"><bdi class="secno">2.2 </bdi>Gebruik</h3><p id="6511FA25" class="space-after">Het beheerportaal is in eerste instantie voor de DSO-beheerders maar kan uitgebreid worden voor alle Geonovum-medewerkers.</p><p id="7C235FB8">Binnen Geonovum is een groot scala aan eigen toepassingen, workflows met GitHub-actions enzovoorts. Deze toepassingen zijjn afhankelijk van de deskundigheid van individuele medewerkers. Om deze afhankelijkheid te verminderen willen we dit zoveel mogelijk automatiseren en beschikbaar maken voor de gebruikers die het daadwerkelijk moeten uitvoeren.</p></section><section id="4AF32F1F" class="chapter"><h3 id="x2-3-4AF32F1F"><bdi class="secno">2.3 </bdi>Beheerlocatie</h3><p id="7760AE6C">Voor het beheerportaal is een eigen <a href="https://beheer.geonovum.nl/" target="_blank">beheerportaal-server</a> ingericht. Het is de bedoeling om het beheerportaal in te richten met een app-service. Dit heeft als voordeel dat dit goed aansluit op Azure, wat door Geonovum gebruikt wordt voor identificatie en authenticatie.</p></section><section id="4E753D5A" class="chapter"><h3 id="x2-4-4E753D5A"><bdi class="secno">2.4 </bdi>Componenten</h3><p id="658E5907">Het beheerportaal is opgebouwd in twee delen backend en frontend. De gebruikte programmeertaal is TypeScript.</p><ul><li><p id="226D26E6">De backend omvat een PostgreSQL-database met daaraan gekoppeld een api.</p></li><li><p id="3C3D8B9F">De frontend omvat een website gebouwd met React.</p></li></ul></section><section id="0871AA7A" class="chapter"><h3 id="x2-5-0871AA7A"><bdi class="secno">2.5 </bdi>Frequentie</h3><p id="1F6DD042">Het beheerportaal wordt nu door diverse gebruikers gebruikt. De bedoeling is, dat het verder uitgerold kan worden als de inlog-procedure geregeld is.</p></section></section><section id="7CD70D38" class="chapter"><h2 id="x3-7CD70D38"><bdi class="secno">3. </bdi>Publicatiestraten</h2><p id="612329AF">Er zijn drie publicatiestraten:</p><ul><li><p id="1D0300A8">word2markdown</p></li><li><p id="173CFDF5">word2werkversie</p></li><li><p id="19E75A13">word2publicatie</p></li></ul><figure id="d4e210"><img src="media/image2.png" alt="Afbeelding met tekst, schermopname, software, Webpagina" style="width: 100%;"><figcaption><a class="self-link" href="#d4e210">Figuur <bdi class="figno">2</bdi></a> <span class="fig-title">Uitgebreide informatie over het beheerportaal en de publicatiestraten vind je op <a href="https://geonovum.github.io/geen-ReSpec/" target="_blank">https://geonovum.github.io/geen-ReSpec/</a></span></figcaption></figure><section id="5B775BF9" class="chapter"><h3 id="x3-1-5B775BF9"><bdi class="secno">3.1 </bdi>word2markdown</h3><section id="0D104DD4" class="chapter"><h4 id="x3-1-1-0D104DD4"><bdi class="secno">3.1.1 </bdi>Functionaliteit</h4><ul><li><p id="07B4A93F">Input is een Word-document gekoppeld aan het sjabloon Respec.dotm.</p></li><li><p id="458686D9">De workflow converteert het Word-document naar ReSpec-markdown volgens de Geonovum ReSpec-template.</p></li><li><p id="0C5FA7DA">De workflow maakt een GitHub-repository en een pages-site aan.</p></li></ul></section><section id="54EFFB96" class="chapter"><h4 id="x3-1-2-54EFFB96"><bdi class="secno">3.1.2 </bdi>Gebruik</h4><p id="159391A5" class="space-after">Iedereen binnen Geonovum die een Word-document naar markdown wil omzetten kan het gebruiken. Deze conversie is bedoeld voor eenmalig gebruik: als je een Word-document hebt en je wilt dit daarna in ReSpec gaan beheren. Word2markdown is vooral bedoeld voor publicaties waar teams aan samenwerken.</p><p id="59472CD9">ReSpec heeft extra informatie nodig om te weten hoe de uiteindelijke publicatie eruit moet zien en waar het opgeslagen moet worden. Deze informatie wordt door de gebruiker toegevoegd aan het document met behulp van een sjabloon ReSpec.dotm. Deze bevat een werkbalk waarin alle toegestane ReSpec-functionaliteit is vastgelegd. Denk daarbij aan speciale opties om bijvoorbeeld code-blokken te maken.</p></section><section id="1A906CBB" class="chapter"><h4 id="x3-1-3-1A906CBB"><bdi class="secno">3.1.3 </bdi>Beheerlocatie</h4><p id="31A80AFD">De broncode voor het beheerportaal staat op de heheerportaal-server op /home/ubuntu/beheerportaal-repos/word2markdown. Het is de bedoeling dat deze op de app-service volledig gedeployed gaat worden vanuit GitHub.</p></section><section id="16BA6993" class="chapter"><h4 id="x3-1-4-16BA6993"><bdi class="secno">3.1.4 </bdi>Componenten</h4><p id="0870E1D4">De workflow bevat de volgende componenten:</p><ul><li><p id="6D94490C">ant wordt gebruikt om de verschillende processen aan te sturen. Denk daarbij aan het maken van (tijdelijke) mappen en het starten van de transformaties.</p></li><li><p id="6CC332B0">xslt voor het uitvoeren van de transformaties. Dit is xslt 2.0 met behulp van de Saxon-processor. Let erop dat elk jaar de licentie vernieuwd moet worden. De benodigde libraries en de licentie staan in map lib.</p></li><li><p id="177C8858">json om de workflow en de workflow-stappen te definiëren.</p></li><li><p id="522D0EA1">yaml om het action-script te definiëren.</p></li><li><p id="1F875BEE">vba wordt binnen het word-sjabloon Respec.dotm gebruikt. Een uitgebreide beschrijving van het sjabloon staat in <a href="https://geonovum.github.io/geen-ReSpec/" target="_blank">Gebruikershandleiding word2respec</a>.</p></li><li><p id="30EFFBB9">markdown voor het uiteindelijke resultaat.</p></li></ul></section><section id="5A36961C" class="chapter"><h4 id="x3-1-5-5A36961C"><bdi class="secno">3.1.5 </bdi>Frequentie</h4><p id="0B12EC67" class="space-after">Er zijn nu twee methoden om de workflow te gebruiken, via een action-script en via het beheerportaal. De workflow op GitHub bevat nog een probleem met betrekking tot het toekennen van gebruikersrechten.</p><p id="7B299758">De workflow wordt nu door diverse gebruikers gebruikt, zowel op GitHub als op het beheerportaal. De bedoeling is om over te gaan op het beheerportaal als de inlog-procedure geregeld is.</p></section></section><section id="4252F354" class="chapter"><h3 id="x3-2-4252F354"><bdi class="secno">3.2 </bdi>word2werkversie</h3><section id="034DB170" class="chapter"><h4 id="x3-2-1-034DB170"><bdi class="secno">3.2.1 </bdi>Functionaliteit</h4><ul><li><p id="746ABB19">Input is een Word-document gekoppeld aan het sjabloon Respec.dotm.</p></li><li><p id="4BD9D7C8">De workflow converteert het Word-document rechtstreeks naar ReSpec-html.</p></li><li><p id="6260164D">De workflow maakt een GitHub-repository en een pages-site aan.</p></li></ul></section><section id="5A6204F6" class="chapter"><h4 id="x3-2-2-5A6204F6"><bdi class="secno">3.2.2 </bdi>Gebruik</h4><p id="740BDF3B">Iedereen binnen Geonovum die een Word-document naar Respec-html wil omzetten kan de workflow gebruiken. Het zet een Word-document om naar ReSpec-html. Bij de omzetting van Word naar Markdown gaat veel Word-functionaliteit verloren. Deze workflow zet alle Word-functionaliteit om naar html-functionaliteit. Samenwerking gebeurt bij deze workflow niet meer in GitHub, maar op de onderliggende word-documenten. Deze variant wordt vooral gebruikt als je een document met veel vormgeving wilt omzetten naar een html-publicatie en deze direct wilt kunnen bekijken. Het zal vooral worden gebruikt om vooraf de uiteindelijke publicatie te zien.</p></section><section id="303C9F23" class="chapter"><h4 id="x3-2-3-303C9F23"><bdi class="secno">3.2.3 </bdi>Beheerlocatie</h4><p id="20B1DF27">De broncode voor het beheerportaal staat op /home/ubuntu/beheerportaal-repos/word2werkversie. Het is de bedoeling dat deze op de app-service volledig gedeployed gaat worden vanuit GitHub.</p></section><section id="13EC9CB3" class="chapter"><h4 id="x3-2-4-13EC9CB3"><bdi class="secno">3.2.4 </bdi>Componenten</h4><p id="5B309A57">De workflow bevat de volgende componenten:</p><ul><li><p id="1DA3FC8B">ant wordt gebruikt om de verschillende processen aan te sturen. Denk daarbij aan het maken van (tijdelijke) mappen en het starten van de transformaties.</p></li><li><p id="72DB49AA">xslt voor het uitvoeren van de transformaties. Dit is xslt 2.0 met behulp van de Saxon-processor. Let erop dat elk jaar de licentie vernieuwd moet worden. De benodigde libraries en de licentie staan in map lib.</p></li><li><p id="602BAC9B">json om de workflow en de workflow-stappen te definiëren.</p></li><li><p id="6F72E050">yaml om het action-script te definiëren.</p></li><li><p id="79DE5C3C">vba wordt binnen het word-sjabloon Respec.dotm gebruikt. Een uitgebreide beschrijving van het sjabloon staat in <a href="https://geonovum.github.io/geen-ReSpec/" target="_blank">Gebruikershandleiding word2respec</a>.</p></li><li><p id="0E3CB756">html en css voor het uiteindelijke resultaat.</p></li></ul></section><section id="1D068571" class="chapter"><h4 id="x3-2-5-1D068571"><bdi class="secno">3.2.5 </bdi>Frequentie</h4><p id="1E3A06B6" class="space-after">Er zijn nu twee methoden om de workflow te gebruiken, via een action-script en via het beheerportaal. De workflow op GitHub bevat nog een probleem met betrekking tot het toekennen van gebruikersrechten.</p><p id="754250E0">De workflow wordt nu door diverse gebruikers gebruikt, zowel op GitHub als op het beheerportaal. De bedoeling is om over te gaan op het beheerportaal als de inlog-procedure geregeld is. </p></section></section><section id="03EFB558" class="chapter"><h3 id="x3-3-03EFB558"><bdi class="secno">3.3 </bdi>word2publicatie</h3><section id="0CB452AA" class="chapter"><h4 id="x3-3-1-0CB452AA"><bdi class="secno">3.3.1 </bdi>Functionaliteit</h4><ul><li><p id="13188648">Input is een Word-document gekoppeld aan het sjabloon Respec.dotm.</p></li><li><p id="5BED724C">De workflow bevat een rechtstreekse conversie van Word naar 'snapshot-html'. Dit is de versie die door het snapshot-script in ReSpec wordt gegenereerd, maar dan door een afzonderlijke transformatie.</p></li><li><p id="08D20788">De workflow maakt een GitHub-repository aan.</p></li><li><p id="16BDC9A3">De repository wordt met behulp van een pull-request gesynchroniseerd met test.docs.geostandaarden.nl of docs.geostandaarden.nl.</p></li></ul></section><section id="27DC8561" class="chapter"><h4 id="x3-3-2-27DC8561"><bdi class="secno">3.3.2 </bdi>Gebruik</h4><p id="23BCEF4E">Als het document klaar is voor publicatie wordt het definitief op de publicatieserver gezet. Daarvoor is deze workflow.</p></section><section id="5B910CCF" class="chapter"><h4 id="x3-3-3-5B910CCF"><bdi class="secno">3.3.3 </bdi>Beheerlocatie</h4><p id="2EF75F4E">De broncode voor het beheerportaal staat op /home/ubuntu/beheerportaal-repos/word2publicatie. Het is de bedoeling dat deze op de app-service volledig gedeployed gaat worden vanuit GitHub.</p></section><section id="57DADDEC" class="chapter"><h4 id="x3-3-4-57DADDEC"><bdi class="secno">3.3.4 </bdi>Componenten</h4><p id="57E498BC">De workflow bevat de volgende componenten:</p><ul><li><p id="0110AF72">ant wordt gebruikt om de verschillende processen aan te sturen. Denk daarbij aan het maken van (tijdelijke) mappen en het starten van de transformaties.</p></li><li><p id="48B51B68">xslt voor het uitvoeren van de transformaties. Dit is xslt 2.0 met behulp van de Saxon-processor. Let erop dat elk jaar de licentie vernieuwd moet worden. De benodigde libraries en de licentie staan in map lib.</p></li><li><p id="67684332">json om de workflow en de workflow-stappen te definiëren.</p></li><li><p id="14EF3854">yaml om het action-script te definiëren.</p></li><li><p id="04488A16">vba wordt binnen het word-sjabloon Respec.dotm gebruikt. Een uitgebreide beschrijving van het sjabloon staat in <a href="https://geonovum.github.io/geen-ReSpec/" target="_blank">Gebruikershandleiding word2respec</a>.</p></li><li><p id="66233709">html en css voor het uiteindelijke resultaat.</p></li></ul></section><section id="0D1D1EC3" class="chapter"><h4 id="x3-3-5-0D1D1EC3"><bdi class="secno">3.3.5 </bdi>Frequentie</h4><p id="672CAB33">Er zijn nu twee methoden om de workflow te gebruiken, via een action-script en via het beheerportaal. De workflow wordt nu zelden gebruikt omdat de locatie op docs.geostandaarden.nl zelden de officiële ReSpec-url is. In veel gevallen moeten verwijzingen naar url’s handmatig aangepast worden. </p></section></section></section><section id="62CAA20C" class="chapter"><h2 id="x4-62CAA20C"><bdi class="secno">4. </bdi>Overzicht</h2><section id="70316F1E" class="chapter"><h3 id="x4-1-70316F1E"><bdi class="secno">4.1 </bdi>DSO-overzicht</h3><section id="24BDCEF7" class="chapter"><h4 id="x4-1-1-24BDCEF7"><bdi class="secno">4.1.1 </bdi>Functionaliteit</h4><ul><li><p id="78F8702C">Input is een opdracht-pakket dat naar de LVBB wordt geupload.</p></li><li><p id="5F7906AE">De workflow converteert de bestanden naar twee overzichten: besluit.html en overzicht.html. Bestand besluit.html toont de besluittekst met alle onderliggende ow-objecten als popup. Overzicht toont alle relaties tussen op- en ow-objecten.</p></li><li><p id="581797D8">Output is een zip-bestand van beide bestanden en benodigde css- en mediabestanden.</p></li></ul><figure id="d4e652"><img src="media/image3.png" alt="Afbeelding met tekst, schermopname, software, Webpagina" style="width: 100%;"><figcaption><a class="self-link" href="#d4e652">Figuur <bdi class="figno">3</bdi></a> <span class="fig-title">Voorbeeldbesluit Net op zee IJmuiden</span></figcaption></figure></section><section id="26AD9AAA" class="chapter"><h4 id="x4-1-2-26AD9AAA"><bdi class="secno">4.1.2 </bdi>Gebruik</h4><p id="34F12A2C">In de tijd dat we voorbeeldbestanden maakten, was het belangrijk dat collega’s konden zien wat er in de ondoorzichtige xml-bestanden stond. Deze workflow is minder relevant geworden nu er minder of geen voorbeeldbestanden worden gemaakt. Voor het uitvoeren van basischecks is het wel handig om de transformatie om te bouwen, zodat het overzichten maakt van download-pakketjes. Deze overzichten kunnen fouten in verwijzingen achterhalen en zichtbaar maken.</p></section><section id="1650FD7C" class="chapter"><h4 id="x4-1-3-1650FD7C"><bdi class="secno">4.1.3 </bdi>Beheerlocatie</h4><p id="4F556DBE">De broncode voor het beheerportaal staat op /home/ubuntu/beheerportaal-repos/DSO_overzicht. Het is de bedoeling dat deze op de app-service volledig gedeployed gaat worden vanuit GitHub. De transformatie is ook beschikbaar op repository <a href="https://github.com/Geonovum/DSO_overzicht" target="_blank">https://github.com/Geonovum/DSO_overzicht</a>. Bij upload van een opdracht-pakketje wordt een action-script gestart.</p></section><section id="6EA69478" class="chapter"><h4 id="x4-1-4-6EA69478"><bdi class="secno">4.1.4 </bdi>Componenten</h4><p id="4736A2BF">De workflow bevat de volgende componenten:</p><ul><li><p id="160E5D6B">ant wordt gebruikt om de verschillende processen aan te sturen. Denk daarbij aan het maken van (tijdelijke) mappen en het starten van de transformaties.</p></li><li><p id="40229827">xslt voor het uitvoeren van de transformaties. Dit is xslt 2.0 met behulp van de Saxon-processor. Let erop dat elk jaar de licentie vernieuwd moet worden. De benodigde libraries en de licentie staan in map lib.</p></li><li><p id="6ED975C2">html en css voor het uiteindelijke resultaat.</p></li></ul></section><section id="6628B78E" class="chapter"><h4 id="x4-1-5-6628B78E"><bdi class="secno">4.1.5 </bdi>Frequentie</h4><p id="005F4E8F">De huidige workflow op basis van opdracht-sets wordt niet meer gebruikt. Op basis van downloadpakketjes zou dit voor de validatiecheck een handig hulpmiddel zijn om te controleren of op- en ow-objecten onderling goed verwijzen.</p></section></section></section><section id="0A30D2DA" class="chapter"><h2 id="x5-0A30D2DA"><bdi class="secno">5. </bdi>Presentatiemodel</h2><p id="15E1C30B">Naast de waardelijsten is het presentatiemodel in beheer bij Geonovum. Er is een relatie tussen beide beheertaken omdat symbolisatie lijn, punt en vlak een eigenschap van een waarde is. Het web-formulier ‘Muteren waardelijsten’ helpt bij het toekennen van symboolcodes aan een waarde.</p><figure id="d4e765"><img src="media/image4.png" alt="Afbeelding met tekst, schermopname, software, nummer" style="width: 100%;"><figcaption><a class="self-link" href="#d4e765">Figuur <bdi class="figno">4</bdi></a> <span class="fig-title">De weergave in de viewer wordt bepaald door de symboolcode in het web-formulier ‘Muteren waardelijsten’</span></figcaption></figure><section id="12B7A01F" class="chapter"><h3 id="x5-1-12B7A01F"><bdi class="secno">5.1 </bdi>Muteren</h3><p id="55A8FA4F" class="space-after">Deze workflow is (nog) niet uitgewerkt. In de praktijk is het presentatiemodel statisch. De bestanden staan in repository <a href="https://github.com/Geonovum/DSO_symbolenbibliotheek/tree/main" target="_blank">https://github.com/Geonovum/DSO_symbolenbibliotheek/tree/main</a>. Het presentatiemodel bestaat uit de bestanden in map sld.</p><p id="25AFCC63">De methodiek voor het vastleggen van type lijn, punt, vlak en kleur is generiek van aard. De kans is groot dat handmatige aanpassingen afwijken van de methodiek. Daarom is het van belang dat wijzigingen geautomatiseerd doorgevoerd worden. In het verleden is er een fout in het presentatiemodel geslopen die heel moeilijk te repareren was.</p></section><section id="4075CA58" class="chapter"><h3 id="x5-2-4075CA58"><bdi class="secno">5.2 </bdi>Publiceren</h3><section id="6D8346FF" class="chapter"><h4 id="x5-2-1-6D8346FF"><bdi class="secno">5.2.1 </bdi>Functionaliteit</h4><ul><li><p id="60478944">Input is een zip-bestand met aangepaste sld-bestanden.</p></li><li><p id="3369CD72">De workflow bevat een transformatie applicatie.xsl dat twee bestanden genereert: symbolisatie.xml en voorwaarden.xml. Het web-formulier ‘Muteren waardelijsten’ gebruikt deze bestanden om suggesties te doen voor de beschikbaarheid van symboolcodes bij het toevoegen en wijzigen van waarden.</p></li><li><p id="7CFB5CC9">De workflow bevat twee transformaties symbolisatie.xsl en waardelijsten.xsl om de inhoud van de sld’s te visualiseren op basis van de laatste versie van de waardelijsten.</p></li><li><p id="52238B12">De bestanden worden geplaatst op repository DSO_symbolenbibliotheek.</p></li></ul></section><section id="389B1BB7" class="chapter"><h4 id="x5-2-2-389B1BB7"><bdi class="secno">5.2.2 </bdi>Gebruik</h4><ul><li><p id="3182FDB8">Beheerders kunnen wijzigingen in de sld’s doorvoeren in het web-formulier ‘Muteren waardelijsten’ door de bestanden symbolisatie.xml en voorwaarden.xml te vervangen.</p></li><li><p id="72D23211">Beheerders kunnen visualisaties maken van de inhoud van de sld’s op basis van de laatste versie van de waardelijsten.</p></li></ul></section><section id="094C4534" class="chapter"><h4 id="x5-2-3-094C4534"><bdi class="secno">5.2.3 </bdi>Beheerlocatie</h4><p id="4E0788B2">Bestanden voor het beheerportaal staan op /home/ubuntu/beheerportaal-repos/DSO_symbolenbibliotheek. Het is de bedoeling dat deze op de app-service volledig gedeployed gaat worden vanuit GitHub.</p></section><section id="12140655" class="chapter"><h4 id="x5-2-4-12140655"><bdi class="secno">5.2.4 </bdi>Componenten</h4><p id="2543B369">De workflow bevat de volgende componenten:</p><ul><li><p id="4D1D2E09">ant wordt gebruikt om de verschillende processen aan te sturen. Denk daarbij aan het maken van (tijdelijke) mappen en het starten van de transformaties.</p></li><li><p id="737BE908">xslt voor het uitvoeren van de transformaties. Dit is xslt 2.0 met behulp van de Saxon-processor. Let erop dat elk jaar de licentie vernieuwd moet worden. De benodigde libraries en de licentie staan in map lib.</p></li><li><p id="063D190A">json om de workflow en de workflow-stappen te definiëren.</p></li></ul></section><section id="2C65D331" class="chapter"><h4 id="x5-2-5-2C65D331"><bdi class="secno">5.2.5 </bdi>Frequentie</h4><p id="212DE8BA">Afgesproken is om publicaties van het presentatiemodel niet publiek toegankelijk te maken. Hierdoor wordt voorkomen dat gebruikers kiezen op grond van de gewenste vorm in plaats van de inhoudelijke betekenis. Beheerders kunnen na wijziging van de waardelijsten nieuwe actuele overzichten genereren.</p></section></section></section><section id="29867F1C" class="chapter"><h2 id="x6-29867F1C"><bdi class="secno">6. </bdi>Waardelijsten</h2><p id="3065A555" class="space-after">De workflow voor het muteren, exporteren en publiceren van waardelijsten moeten in volgorde worden uitgevoerd. De output van de ene deel-workflow is de input van de andere deel-workflow.</p><p id="2686438F" class="space-after">Vooraf worden de mutaties ingevoerd in het web-formulier 'Waardelijsten muteren' en toegevoegd aan bestand mutaties.xml. Dit bestand bevat alle mutaties die periodiek worden goedgekeurd en doorgevoerd en is uiteindelijk de input voor de workflows.</p><p id="2E52BFA2">Het web-formulier staat nu nog op de Synology-NAS, maar wordt uiteindelijk ingeboouwd in het beheerportaal. Gebruikte technieken in het web-formulier zijn JQuery/AJAX in combinatie met PHP.</p><figure id="d4e945"><img src="media/image5.png" alt="Afbeelding met tekst, schermopname, software, Computerpictogram" style="width: 100%;"><figcaption><a class="self-link" href="#d4e945">Figuur <bdi class="figno">5</bdi></a> <span class="fig-title">Opbouw van het web-formulier</span></figcaption></figure><section id="6DC4AB76" class="chapter"><h3 id="x6-1-6DC4AB76"><bdi class="secno">6.1 </bdi>Muteren</h3><section id="429F5006" class="chapter"><h4 id="x6-1-1-429F5006"><bdi class="secno">6.1.1 </bdi>Functionaliteit</h4><ul><li><p id="259FD1D5">Input is bestand mutaties.xml.</p></li><li><p id="5034586C">Mutaties.xml wordt doorgevoerd op de bestanden in repository <a href="https://github.com/Geonovum/DSO_waardelijsten/tree/main/archief" target="_blank">https://github.com/Geonovum/DSO_waardelijsten/tree/main/archief</a>.</p></li><li><p id="50B23417">De workflow maakt twee bestanden: waardelijsten.xml en informatie.txt in bestand output.zip. Waardelijsten.xml bevat de nieuwe versie en informatie.txt bevat de release notes.</p></li></ul></section><section id="67C75D0A" class="chapter"><h4 id="x6-1-2-67C75D0A"><bdi class="secno">6.1.2 </bdi>Gebruik</h4><ul><li><p id="5E589E01">De workflow is alleen voor DSO-beheerders. Op het beheerportaal moet het identificatie- en autorisatiebeheer nog geregeld worden. Dit gaat uiteindelijk gebeuren met Azure.</p></li><li><p id="1C3775E7">We hebben de transformaties ook op GitHub action-scripts, maar dit leverde veel problemen met verlopen keys op. Sinds versie 4.2.1 is de gebruikelijke werkwijze met behulp van het beheerportaal. De beheerders hebben toegang.</p></li></ul></section><section id="6FBA282E" class="chapter"><h4 id="x6-1-3-6FBA282E"><bdi class="secno">6.1.3 </bdi>Beheerlocatie</h4><p id="53A45AC8">Bestanden voor het beheerportaal staan op /home/ubuntu/beheerportaal-repos/DSO_waardelijsten. Het is de bedoeling dat deze op de app-service volledig gedeployed gaat worden vanuit GitHub.</p></section><section id="633B7E0D" class="chapter"><h4 id="x6-1-4-633B7E0D"><bdi class="secno">6.1.4 </bdi>Componenten</h4><p id="7C5F98ED">De workflow bevat de volgende componenten:</p><ul><li><p id="7A7AC4FD">ant wordt gebruikt om de verschillende processen aan te sturen. Denk daarbij aan het maken van (tijdelijke) mappen en het starten van de transformaties.</p></li><li><p id="2B8C974C">xslt voor het uitvoeren van de transformaties. Dit is xslt 2.0 met behulp van de Saxon-processor. Let erop dat elk jaar de licentie vernieuwd moet worden. De benodigde libraries en de licentie staan in map lib.</p></li><li><p id="03ED9579">json om de workflow en de workflow-stappen te definiëren.</p></li></ul></section><section id="095C9D44" class="chapter"><h4 id="x6-1-5-095C9D44"><bdi class="secno">6.1.5 </bdi>Frequentie</h4><p id="30E705C6">De waardelijsten worden periodiek (maandelijks) gemuteerd.</p></section></section><section id="2E646573" class="chapter"><h3 id="x6-2-2E646573"><bdi class="secno">6.2 </bdi>Exporteren</h3><p id="03C3684C">De manier waarop data in de stelselcatalogus wordt opgeslagen, is uiterst complex. Het exportbestand bevat niet alleen de laatste versie ven de waardelijsten maar alle versies van de waardelijsten. Daardoor groeit de omvang van het exportbestand. Op verzoek van de stelselcatalogus blijft dit zo ondanks de omvang, omdat ze in geval van een crash eenvoudig opnieuw de waardelijsten volledig kunnen inlezen.</p><section id="13C63A1C" class="chapter"><h4 id="x6-2-1-13C63A1C"><bdi class="secno">6.2.1 </bdi>Functionaliteit</h4><ul><li><p id="36AFFB8B">Input is bestand output.zip uit de workflow Mutatie in paragraaf <a href="#6DC4AB76">6.1</a>. Het zip-bestand bevat twee bestanden waardelijsten.xml en informatie.txt.</p></li><li><p id="18FB0E87">De workflow maakt een tijdelijk bestand export.xml en een definitief bestand export.json. Het bevat alle waardelijsten die in de stelselcatalogus worden weergegeven.</p></li><li><p id="30706951">Twee versies van de export worden op de harvest-locatie op <a href="https://register.geostandaarden.nl/waardelijst/imow/" target="_blank">https://register.geostandaarden.nl/waardelijst/imow/</a> geplaatst.</p></li></ul><figure id="d4e1142"><img src="media/image6.png" alt="Afbeelding met tekst, schermopname, software, Computerpictogram" style="width: 100%;"><figcaption><a class="self-link" href="#d4e1142">Figuur <bdi class="figno">6</bdi></a> <span class="fig-title">Overzicht van de harvest-locatie</span></figcaption></figure></section><section id="72690C62" class="chapter"><h4 id="x6-2-2-72690C62"><bdi class="secno">6.2.2 </bdi>Gebruik</h4><ul><li><p id="430D0669">De workflow is alleen voor DSO-beheerders. Op het beheerportaal moet het identificatie- en autorisatiebeheer nog geregeld worden. Dit gaat uiteindelijk gebeuren met Azure.</p></li><li><p id="65BBB8E4">We hebben de transformaties ook op GitHub action-scripts, maar dit leverde veel problemen met verlopen keys op. Sinds versie 4.2.1 is de gebruikelijke werkwijze met behulp van het beheerportaal. De beheerders hebben toegang.</p></li><li><p id="611DC977">De stelselcatalogus controleert elke twee uur of er een nieuwe versie van de waardelijsten staat. Let erop dat er altijd een bestand export.json staat. De stelselcatalogus krijgt een foutmelding als deze ontbreekt.</p></li></ul></section><section id="6DB0FF5B" class="chapter"><h4 id="x6-2-3-6DB0FF5B"><bdi class="secno">6.2.3 </bdi>Beheerlocatie</h4><p id="3A4141EA">Bestanden voor het beheerportaal staan op /home/ubuntu/beheerportaal-repos/DSO_waardelijsten. Het is de bedoeling dat deze op de app-service volledig gedeployed gaat worden vanuit GitHub.</p></section><section id="748A9196" class="chapter"><h4 id="x6-2-4-748A9196"><bdi class="secno">6.2.4 </bdi>Componenten</h4><p id="030010B2">De workflow bevat de volgende componenten:</p><ul><li><p id="348D310A">ant wordt gebruikt om de verschillende processen aan te sturen. Denk daarbij aan het maken van (tijdelijke) mappen en het starten van de transformaties.</p></li><li><p id="279F2534">xslt voor het uitvoeren van de transformaties. Dit is xslt 2.0 met behulp van de Saxon-processor. Let erop dat elk jaar de licentie vernieuwd moet worden. De benodigde libraries en de licentie staan in map lib.</p></li><li><p id="00046051">json om de workflow en de workflow-stappen te definiëren. Daarnaast wordt json gebruikt als uitwisselingsformaat met de stelselcatalogus.</p></li></ul></section><section id="599AB208" class="chapter"><h4 id="x6-2-5-599AB208"><bdi class="secno">6.2.5 </bdi>Frequentie</h4><p id="3AA9F12A">De waardelijsten worden periodiek (maandelijks) geëxporteerd.</p></section></section><section id="55CAFFCF" class="chapter"><h3 id="x6-3-55CAFFCF"><bdi class="secno">6.3 </bdi>Publiceren</h3><section id="5B8424DE" class="chapter"><h4 id="x6-3-1-5B8424DE"><bdi class="secno">6.3.1 </bdi>Functionaliteit</h4><ul><li><p id="77873EFF">Input is bestand output.zip uit de workflow Mutatie in paragraaf <a href="#6DC4AB76">6.1</a>. Het zip-bestand bevat twee bestanden waardelijsten.xml en informatie.txt.</p></li><li><p id="1A88C17D">De workflow maakt drie verschillende versies van de waardelijsten aan ten behoeve van import door diverse softwareleveranciers. Het gaat om de bestandsformaten xml, json en xlsx. Daarnaast wordt een download-pakket klaargezet als zip-bestand.</p></li><li><p id="0B738DD6">De workflow plaatst de output-bestanden in de repository <a href="https://github.com/Geonovum/TPOD-waardelijsten" target="_blank">https://github.com/Geonovum/TPOD-waardelijsten</a>. Nu wordt het nog handmatig klaargezet als service-product op de website.</p></li></ul></section><section id="1A917462" class="chapter"><h4 id="x6-3-2-1A917462"><bdi class="secno">6.3.2 </bdi>Gebruik</h4><ul><li><p id="592A977C">De workflow is alleen voor DSO-beheerders. Op het beheerportaal moet het identificatie- en autorisatiebeheer nog geregeld worden. Dit gaat uiteindelijk gebeuren met Azure.</p></li><li><p id="52025F9D">We hebben de transformaties ook op GitHub action-scripts, maar dit leverde veel problemen met verlopen keys op. Sinds versie 4.2.1 is de gebruikelijke werkwijze met behulp van het beheerportaal. De beheerders hebben toegang.</p></li><li><p id="401AF5A2">De bestanden worden als service-product op de Geonovum-website geplaatst. Dit gebeurt nu nog handmatig, maar dit kan ook als automatische deploy.</p></li></ul></section><section id="654E1B65" class="chapter"><h4 id="x6-3-3-654E1B65"><bdi class="secno">6.3.3 </bdi>Beheerlocatie</h4><p id="007DDFD7">Bestanden voor het beheerportaal staan op /home/ubuntu/beheerportaal-repos/DSO_waardelijsten. Het is de bedoeling dat deze op de app-service volledig gedeployed gaat worden vanuit GitHub.</p></section><section id="7800EF07" class="chapter"><h4 id="x6-3-4-7800EF07"><bdi class="secno">6.3.4 </bdi>Componenten</h4><p id="56DEDB06">De workflow bevat de volgende componenten:</p><ul><li><p id="3E8567BF">ant wordt gebruikt om de verschillende processen aan te sturen. Denk daarbij aan het maken van (tijdelijke) mappen en het starten van de transformaties.</p></li><li><p id="1EE9D9D0">xslt voor het uitvoeren van de transformaties. Dit is xslt 2.0 met behulp van de Saxon-processor. Let erop dat elk jaar de licentie vernieuwd moet worden. De benodigde libraries en de licentie staan in map lib.</p></li><li><p id="0C55C8B9">json om de workflow en de workflow-stappen te definiëren. Daarnaast wordt json gebruikt als uitwisselingsformaat met de stelselcatalogus.</p></li></ul></section><section id="352618A4" class="chapter"><h4 id="x6-3-5-352618A4"><bdi class="secno">6.3.5 </bdi>Frequentie</h4><p id="7AAD38C3">De waardelijsten worden periodiek (maandelijks) gepubliceerd.</p></section></section></section><section id="271E7FC0" class="chapter"><h2 id="x7-271E7FC0"><bdi class="secno">7. </bdi>Toepassingsprofiel</h2><section id="6070D0F7" class="chapter"><h3 id="x7-1-6070D0F7"><bdi class="secno">7.1 </bdi>Opslaan</h3><section id="0ACC24F6" class="chapter"><h4 id="x7-1-1-0ACC24F6"><bdi class="secno">7.1.1 </bdi>Functionaliteit</h4><ul><li><p id="54B2AF7B">Input is een word-bestand, gebaseerd op sjabloon ‘TPOD sjabloon.dotm’. Dit sjabloon voegt alle benodigde metadata toe aan het word-bestand.</p></li><li><p id="6602F1C6">De workflow splitst het word-bestand in tekstfragmenten en maakt een bestand manifest.xml waarin de opbouw van het word-bestand is vastgelegd.</p></li><li><p id="1A022EF2">De workflow plaatst de output-bestanden in de repository <a href="https://github.com/Geonovum/tpod-beheer/tree/main/archief" target="_blank">https://github.com/Geonovum/tpod-beheer/tree/main/archief</a>.</p></li></ul></section><section id="60CFB09C" class="chapter"><h4 id="x7-1-2-60CFB09C"><bdi class="secno">7.1.2 </bdi>Gebruik</h4><ul><li><p id="1AB74171">De workflow is alleen voor DSO-beheerders. Op het beheerportaal moet het identificatie- en autorisatiebeheer nog geregeld worden. Dit gaat uiteindelijk gebeuren met Azure.</p></li><li><p id="20EF3746">Voorheen was het zo dat wijzigingen in alle toepassingsprofielen doorgevoerd werden. Dit leidde tot inconsistenties. De opzet is nu dat wijzigingen in een basistekst worden bijgehouden waarna ze worden geëxporteerd naar alle overige toepassingsprofielen. Dit laatste wordt uitgevoerd door de workflow ‘Samenvoegen’ in paragraaf <a href="#4473E89F">7.2</a>.</p></li></ul></section><section id="14284635" class="chapter"><h4 id="x7-1-3-14284635"><bdi class="secno">7.1.3 </bdi>Beheerlocatie</h4><p id="4DF090A0">De werkwijze met splitsen en samenvoegen van toepassingsprofielen is op dit moment niet ingeregeld met workflows. Ook deze workflows zullen toegevoegd worden aan het beheerportaal. De transformaties voor het splitsen en samenvoegen staan op repository <a href="https://github.com/Geonovum/tpod-beheer" target="_blank">https://github.com/Geonovum/tpod-beheer</a>. Hier staat ook een uitgebreide beschrijving.</p></section><section id="4E6C7DA7" class="chapter"><h4 id="x7-1-4-4E6C7DA7"><bdi class="secno">7.1.4 </bdi>Componenten</h4><ul><li><p id="16788DFD">ant wordt gebruikt om de verschillende processen aan te sturen. Denk daarbij aan het maken van (tijdelijke) mappen en het starten van de transformaties.</p></li><li><p id="29EBEA05">xslt voor het uitvoeren van de transformaties. Dit is xslt 2.0 met behulp van de Saxon-processor. Let erop dat elk jaar de licentie vernieuwd moet worden. De benodigde libraries en de licentie staan in map lib.</p></li><li><p id="288B2C74">json om de workflow en de workflow-stappen te definiëren. Daarnaast wordt json gebruikt als uitwisselingsformaat met de stelselcatalogus.</p></li></ul></section><section id="411B2ACE" class="chapter"><h4 id="x7-1-5-411B2ACE"><bdi class="secno">7.1.5 </bdi>Frequentie</h4><p id="738B626D">Deze workflow is vooral van toepassing bij:</p><ul><li><p id="4042EB7D">een grote wijziging voor alle toepassingsprofielen,</p></li><li><p id="26A15B7F" class="space-after">een toepassingsprofiel voor een nieuw instrument.</p></li></ul><p id="101678C0">De huidige aanpassingen worden meestal gedaan in het onderliggende word-document, in beheer bij Nienke. Hierop wordt de rhino-transformatie toegepast.</p></section></section><section id="4473E89F" class="chapter"><h3 id="x7-2-4473E89F"><bdi class="secno">7.2 </bdi>Samenvoegen</h3><p id="4DFAB655">Voor de invoer staat op de Synology-NAS een web-formulier. Na invullen levert dit een bestand manifest.xml op dat de structuur van de nieuwe versie van een toepassingsprofiel of een volledig nieuw toepassingsprofiel vastlegt. Het web-formulier ‘Toepassingsprofiel samenstellen’ wordt onderdeel van het beheerportaal.</p><figure id="d4e1536"><img src="media/image7.png" alt="Afbeelding met tekst, schermopname, software, Computerpictogram" style="width: 100%;"><figcaption><a class="self-link" href="#d4e1536">Figuur <bdi class="figno">7</bdi></a> <span class="fig-title">Web-formulier voor het samenstellen van een nieuw toepassingsprofiel</span></figcaption></figure><section id="36751E07" class="chapter"><h4 id="x7-2-1-36751E07"><bdi class="secno">7.2.1 </bdi>Functionaliteit</h4><ul><li><p id="460DB23B">Input is bestand manifest.xml. Dit is het resultaat van web-formulier ‘Toepassingsprofiel samenstellen’.</p></li><li><p id="17AE03FB">De workflow voegt de tekstfragmenten in repository <a href="https://github.com/Geonovum/tpod-beheer/tree/main/archief" target="_blank">https://github.com/Geonovum/tpod-beheer/tree/main/archief</a> samen op basis van manifest.xml. Het resultaat is een word-bestand van het toepassingsprofiel.</p></li></ul></section><section id="09DB72C1" class="chapter"><h4 id="x7-2-2-09DB72C1"><bdi class="secno">7.2.2 </bdi>Gebruik</h4><ul><li><p id="42CDFCED">De workflow is alleen voor DSO-beheerders. Op het beheerportaal moet het identificatie- en autorisatiebeheer nog geregeld worden. Dit gaat uiteindelijk gebeuren met Azure.</p></li><li><p id="736CED61">Voorheen was het zo dat wijzigingen in alle toepassingsprofielen doorgevoerd werden. Dit leidde tot inconsistenties. De opzet is nu dat wijzigingen in een basistekst worden bijgehouden waarna ze worden geëxporteerd naar alle overige toepassingsprofielen. Dit laatste wordt uitgevoerd door de workflow ‘Samenvoegen’ in paragraaf <a href="#4473E89F">7.2</a>.</p></li><li><p id="5F7423FD">Het is nog wel nodig om in het samengevoegde document te controleren of er foute verwijzingen zijn opgetreden. Dit kan gebeuren als de tekst waarnaar wordt verwezen niet in het document is opgenomen.</p></li></ul></section><section id="34DBA7E9" class="chapter"><h4 id="x7-2-3-34DBA7E9"><bdi class="secno">7.2.3 </bdi>Beheerlocatie</h4><p id="69C57148">De werkwijze met splitsen en samenvoegen van toepassingsprofielen is op dit moment niet ingeregeld met workflows. Ook deze workflows zullen toegevoegd worden aan het beheerportaal. De transformaties voor het splitsen en samenvoegen staan op repository <a href="https://github.com/Geonovum/tpod-beheer" target="_blank">https://github.com/Geonovum/tpod-beheer</a>. Hier staat ook een uitgebreide beschrijving.</p></section><section id="5697B69D" class="chapter"><h4 id="x7-2-4-5697B69D"><bdi class="secno">7.2.4 </bdi>Componenten</h4><ul><li><p id="15458E9D">ant wordt gebruikt om de verschillende processen aan te sturen. Denk daarbij aan het maken van (tijdelijke) mappen en het starten van de transformaties.</p></li><li><p id="287CCDE4">xslt voor het uitvoeren van de transformaties. Dit is xslt 2.0 met behulp van de Saxon-processor. Let erop dat elk jaar de licentie vernieuwd moet worden. De benodigde libraries en de licentie staan in map lib.</p></li><li><p id="56F367C9">json om de workflow en de workflow-stappen te definiëren. Daarnaast wordt json gebruikt als uitwisselingsformaat met de stelselcatalogus.</p></li></ul></section><section id="52E1808E" class="chapter"><h4 id="x7-2-5-52E1808E"><bdi class="secno">7.2.5 </bdi>Frequentie</h4><p id="300DAF10">Deze workflow is vooral van toepassing bij:</p><ul><li><p id="1801CCBC">een grote wijziging voor alle toepassingsprofielen,</p></li><li><p id="18180C8F" class="space-after">een toepassingsprofiel voor een nieuw instrument.</p></li></ul><p id="6607AFD5">De huidige aanpassingen worden meestal gedaan in het onderliggende word-document, in beheer bij Nienke. Hierop wordt de rhino-transformatie toegepast.</p></section></section><section id="27C71157" class="chapter"><h3 id="x7-3-27C71157"><bdi class="secno">7.3 </bdi>Publiceren</h3><p id="423B2342">Toepassingsprofielen kunnen we niet met ReSpec publiceren omdat de koppenstructuur afwijkt. We hebben in een toepassingsprofiel op het hoogste niveau een indeling in modulen met A, B, C, … De workflow heeft daarom de naam ‘rhino’ gekregen, wat staat voor ‘ReSpec-html in name only’. Daarnaast wordt er extra SEO-informatie toegevoegd.</p><figure id="d4e1704"><img src="media/image8.png" alt="Afbeelding met tekst, schermopname, software, Computerpictogram" style="width: 100%;"><figcaption><a class="self-link" href="#d4e1704">Figuur <bdi class="figno">8</bdi></a> <span class="fig-title">De SEO-informatie zoals dat in het toepassingsprofiel Projectbesluit staat</span></figcaption></figure><section id="1AC92E1F" class="chapter"><h4 id="x7-3-1-1AC92E1F"><bdi class="secno">7.3.1 </bdi>Functionaliteit</h4><ul><li><p id="32FB0898">Input is een Word-document gekoppeld aan het sjabloon ‘TPOD publicatie.dotm’. Let erop: voor het maken van een toepassingsprofiel wordt sjabloon ‘TPOD sjabloon.dotm’ gebruikt.</p></li><li><p id="638584EF">De workflow bevat een rechtstreekse conversie van Word naar html.</p></li><li><p id="1449BD3D">De workflow maakt een GitHub-repository aan.</p></li><li><p id="6BED7CAA">De repository wordt met behulp van een pull-request gesynchroniseerd met test.docs.geostandaarden.nl of docs.geostandaarden.nl.</p></li></ul></section><section id="10D465BF" class="chapter"><h4 id="x7-3-2-10D465BF"><bdi class="secno">7.3.2 </bdi>Gebruik</h4><p id="3F4FF7B9">Als het document klaar is voor publicatie wordt het definitief op de publicatieserver gezet. Daarvoor is deze workflow.</p></section><section id="79DF5BE8" class="chapter"><h4 id="x7-3-3-79DF5BE8"><bdi class="secno">7.3.3 </bdi>Beheerlocatie</h4><p id="08D5BC1C">De broncode voor het beheerportaal staat op /home/ubuntu/beheerportaal-repos/tpod-publicatie. Het is de bedoeling dat deze op de app-service volledig gedeployed gaat worden vanuit GitHub.</p></section><section id="0A9E3626" class="chapter"><h4 id="x7-3-4-0A9E3626"><bdi class="secno">7.3.4 </bdi>Componenten</h4><p id="728FF737">De workflow bevat de volgende componenten:</p><ul><li><p id="180BE7A7">ant wordt gebruikt om de verschillende processen aan te sturen. Denk daarbij aan het maken van (tijdelijke) mappen en het starten van de transformaties.</p></li><li><p id="1BC2B016">xslt voor het uitvoeren van de transformaties. Dit is xslt 2.0 met behulp van de Saxon-processor. Let erop dat elk jaar de licentie vernieuwd moet worden. De benodigde libraries en de licentie staan in map lib.</p></li><li><p id="16E9FB3C">json om de workflow en de workflow-stappen te definiëren.</p></li><li><p id="2D041AEE">vba wordt binnen de word-sjablonen ‘TPOD sjabloon.dotm’ en ‘TPOD publicatie.dotm’ gebruikt.</p></li><li><p id="1189D8C8">html en css voor het uiteindelijke resultaat.</p></li></ul></section><section id="704E2C99" class="chapter"><h4 id="x7-3-5-704E2C99"><bdi class="secno">7.3.5 </bdi>Frequentie</h4><p id="10D2FF48" class="space-after">De rhino-transformatie wordt regelmatig gebruikt. De workflow is noodzakelijk bij iedere update van de toepassingsprofielen.</p></section></section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Beheerdocumentatie - Vastgestelde versie</div><script src="https://gitdocumentatie.logius.nl/publicatie/respec/fixup.js"></script></body></html>
