@@ -68,7 +68,7 @@ jobs:
             echo "$output"
 
             # Waarschuwingen isoleren en tonen onder eigen kopje
-            warn_lines="$(echo "$output" | grep -E '⚠|[Ww]arning' || true)"
+            warn_lines="$(echo "$output" | grep -E '(^|\s)⚠|(^|\s)[Ww]arning:' || true)"
             if [ -n "$warn_lines" ]; then
               echo "---- Waarschuwingen ----"
               echo "$warn_lines"
@@ -84,9 +84,10 @@ jobs:
                 echo ""
               } >> warnings_summary.md
 
-              if [ "${FAIL_ON_WARNINGS}" = "true" ]; then
-                warn_failed=1
-              fi
+                if [ "${FAIL_ON_WARNINGS}" = "true" ] && [ -n "$warn_lines" ]; then
+                    echo "::error::Kritieke/Google-preset waarschuwingen gedetecteerd."
+                    warn_failed=1
+                fi
             fi
             echo "::endgroup::"
           done
