@@ -1,0 +1,88 @@
+# .github/workflows/validate-and-deploy.yml
+name: Validate JSON-LD & Deploy to Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate JSON-LD in HTML
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install validator
+        run: npm i -g structured-data-testing-tool@^4
+
+      - name: Run schema validation on HTML files
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s globstar nullglob
+          files=(**/*.html)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "Geen HTML-bestanden gevonden; sla validatie over."
+            exit 0
+          fi
+          failed=0
+          for f in "${files[@]}"; do
+            echo "▶︎ Validating $f"
+            # Voeg desgewenst --presets Google of --schemas "jsonld:Article,..." toe
+            if ! sdtt --file "$f" --info; then
+              echo "✗ Fouten in: $f"
+              failed=1
+            else
+              echo "✓ OK: $f"
+            fi
+          done
+          if [ "$failed" -ne 0 ]; then
+            echo "::error::Structured data validation failures detected."
+            exit 1
+          fi
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: validate
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      # Kopieer alleen sitebestanden naar een schone ./dist (geen .github, node_modules, etc.)
+      - name: Prepare static site (no build)
+        run: |
+          rsync -av \
+            --exclude='.git*' --exclude='node_modules' --exclude='.github' \
+            ./ ./dist/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
