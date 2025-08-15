@@ -15,6 +15,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  # Zet op 'false' als je NIET wilt falen op waarschuwingen.
+  FAIL_ON_WARNINGS: "true"
+
 jobs:
   validate:
     name: Validate JSON-LD in HTML
@@ -41,19 +45,43 @@ jobs:
             echo "Geen HTML-bestanden gevonden; sla validatie over."
             exit 0
           fi
+
           failed=0
+          warn_failed=0
+
           for f in "${files[@]}"; do
             echo "▶︎ Validating $f"
-            # Voeg desgewenst --presets Google of --schemas "jsonld:Article,..." toe
-            if ! sdtt --file "$f" --info --presets Google; then
+            # --info voor leesbaar rapport; --presets Google voor Google-specifieke checks
+            # We capteren stdout/stderr zodat we ook op waarschuwingen kunnen testen.
+            output="$(sdtt --file "$f" --info --presets Google 2>&1)" || {
+              echo "$output"
               echo "✗ Fouten in: $f"
               failed=1
-            else
-              echo "✓ OK: $f"
+              continue
+            }
+
+            echo "$output"
+
+            if [ "${FAIL_ON_WARNINGS}" = "true" ]; then
+              # Zoek naar waarschuwingen; sdtt gebruikt vaak '⚠' of het woord 'Warning'
+              if echo "$output" | grep -E -q '⚠|[Ww]arning'; then
+                echo "::warning file=${f}::Waarschuwingen gedetecteerd (Google preset)."
+                warn_failed=1
+              fi
+            fi
+
+            if [ "${failed}" -eq 0 ]; then
+              echo "✓ OK (met Google-preset): $f"
             fi
           done
+
           if [ "$failed" -ne 0 ]; then
-            echo "::error::Structured data validation failures detected."
+            echo "::error::Structured data validation errors detected."
+            exit 1
+          fi
+
+          if [ "${FAIL_ON_WARNINGS}" = "true" ] && [ "$warn_failed" -ne 0 ]; then
+            echo "::error::Google preset warnings detected (FAIL_ON_WARNINGS=true)."
             exit 1
           fi
 
@@ -71,7 +99,7 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      # Kopieer alleen sitebestanden naar een schone ./dist (geen .github, node_modules, etc.)
+      # Kopieer alleen sitebestanden naar een schone ./dist
       - name: Prepare static site (no build)
         run: |
           rsync -av \
