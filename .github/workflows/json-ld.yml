@@ -45,7 +45,7 @@ jobs:
           for f in "${files[@]}"; do
             echo "▶︎ Validating $f"
             # Voeg desgewenst --presets Google of --schemas "jsonld:Article,..." toe
-            if ! sdtt --file "$f" --info; then
+            if ! sdtt --file "$f" --info --presets Google; then
               echo "✗ Fouten in: $f"
               failed=1
             else
