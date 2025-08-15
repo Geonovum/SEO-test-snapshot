@@ -49,31 +49,52 @@ jobs:
           failed=0
           warn_failed=0
 
+          # Maak (of leeg) een samenvattingssectie
+          echo "## Structured Data waarschuwingen" > warnings_summary.md
+          echo "" >> warnings_summary.md
+
           for f in "${files[@]}"; do
-            echo "▶︎ Validating $f"
-            # --info voor leesbaar rapport; --presets Google voor Google-specifieke checks
-            # We capteren stdout/stderr zodat we ook op waarschuwingen kunnen testen.
-            output="$(sdtt --file "$f" --info --presets Google 2>&1)" || {
+            echo "::group::Validating $f"
+            # Draai sdtt en capteer output
+            if ! output="$(sdtt --file "$f" --info --presets Google 2>&1)"; then
               echo "$output"
               echo "✗ Fouten in: $f"
               failed=1
+              echo "::endgroup::"
               continue
-            }
+            fi
 
+            # Volledige output tonen
             echo "$output"
 
-            if [ "${FAIL_ON_WARNINGS}" = "true" ]; then
-              # Zoek naar waarschuwingen; sdtt gebruikt vaak '⚠' of het woord 'Warning'
-              if echo "$output" | grep -E -q '⚠|[Ww]arning'; then
-                echo "::warning file=${f}::Waarschuwingen gedetecteerd (Google preset)."
+            # Waarschuwingen isoleren en tonen onder eigen kopje
+            warn_lines="$(echo "$output" | grep -E '⚠|[Ww]arning' || true)"
+            if [ -n "$warn_lines" ]; then
+              echo "---- Waarschuwingen ----"
+              echo "$warn_lines"
+              echo "------------------------"
+
+              # Voeg ook toe aan de Job Summary
+              {
+                echo "### $f"
+                echo ""
+                echo '```'
+                echo "$warn_lines"
+                echo '```'
+                echo ""
+              } >> warnings_summary.md
+
+              if [ "${FAIL_ON_WARNINGS}" = "true" ]; then
                 warn_failed=1
               fi
             fi
-
-            if [ "${failed}" -eq 0 ]; then
-              echo "✓ OK (met Google-preset): $f"
-            fi
+            echo "::endgroup::"
           done
+
+          # Publiceer Samenvatting (alleen als er iets in staat)
+          if [ -s warnings_summary.md ]; then
+            cat warnings_summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
 
           if [ "$failed" -ne 0 ]; then
             echo "::error::Structured data validation errors detected."
@@ -84,6 +105,7 @@ jobs:
             echo "::error::Google preset warnings detected (FAIL_ON_WARNINGS=true)."
             exit 1
           fi
+          rm -f warnings_summary.md
 
   deploy:
     name: Deploy to GitHub Pages
@@ -99,7 +121,6 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      # Kopieer alleen sitebestanden naar een schone ./dist
       - name: Prepare static site (no build)
         run: |
           rsync -av \
